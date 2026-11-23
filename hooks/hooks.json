@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeReadFile": [
+      {
+        "command": "for d in \"$CURSOR_PLUGIN_ROOT\"; do g=\"$d/hooks/env_guard.py\"; if [ -n \"$d\" ] && [ -f \"$g\" ]; then p=$(command -v python3 || command -v python) || break; exec \"$p\" \"$g\" --client cursor; fi; done; echo '{\"permission\":\"allow\"}'",
+        "timeout": 10
+      }
+    ],
+    "beforeShellExecution": [
+      {
+        "command": "for d in \"$CURSOR_PLUGIN_ROOT\"; do g=\"$d/hooks/env_guard.py\"; if [ -n \"$d\" ] && [ -f \"$g\" ]; then p=$(command -v python3 || command -v python) || break; exec \"$p\" \"$g\" --client cursor; fi; done; echo '{\"permission\":\"allow\"}'",
+        "timeout": 10
+      }
+    ]
+  }
+}
